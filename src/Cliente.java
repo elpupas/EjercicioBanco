@@ -37,11 +37,13 @@ public class Cliente {
 	}
 	//Metodos
 	public int findIndexCuenta(int numCuenta) {
+		//El metodo findIndexCuenta con el parametro int numCuenta
 		int i = 0, pos = -1;
+		//Utilizamos un ciclo while donde: si la var i es menor que cuentas.size, cuando i vale 0
 		while ( i < cuentas.size()) {
 
 			if (numCuenta==cuentas.get(i).getNumCuenta()) {
-				return  i;
+				pos=  i;
 			}
 			i++;
 		}
