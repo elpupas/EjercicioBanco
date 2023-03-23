@@ -2,6 +2,11 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.UUID;
+/*
+ * Ejercicio del banco donde se pide crear dos clases. CLiente y Cuenta con sus respesctivos metodos
+ * en el main tenenos que crear un menu, donde permita al usuario crear cliente, elimininar cliente
+ * crear cuenta, ingresar dinero, retirar dinero
+ */
 
 public class BancoDePeter {
 	private static ArrayList<Cliente> cliente = new ArrayList<Cliente>();
@@ -102,10 +107,10 @@ public static void eliminarCliente() {
 				System.out.println("El cliente no existe");
 			} else
 			{  
-				System.out.println("El cliente ha sido eliminado" 
+				System.out.println("El cliente ha sido eliminado " 
 			+ cliente.get(i).getNombre().toUpperCase());
 				cliente.remove(i);
-				 //Creo un objeto Cliente con nombre dCuenta y almaceno la pos de la var i en cliente.get							
+				 //uso el arraylist con cliente.remove y la var i, que almacena la posicion del cliente para eliminarlo						
 			
 			}
 			
@@ -145,21 +150,22 @@ while ( i < cliente.size())
 	//Saldo
 public static void ingresarSaldo() {
 int  nc;
-
+//Con la funcion pedirDatos y la funcion findIndex que es un int, para almacenarlo en la var iClient
 	pedirDatos();
 	 iClient = findIndex(nombre, apellido);
-	if (iClient < 0) 
+	if (iClient < 0) //Si iClient es menor que 0, el cliente no existe
 	{
 		System.out.println("El cliente no existe");
 	}else 
-	{
+	{//si se encuentra la posicion, se le pide por pantalla al usuario que teclee el numero de cuenta
 		System.out.println("Ingrese numero de cuenta");
 		 nc = input.nextInt();
 		input.nextLine();
-		Cliente clienteEncontrado = cliente.get(iClient);
-		
+		Cliente clienteEncontrado = cliente.get(iClient); //Creo un objeto de la clase Cliente con el nombre clienteEncontrado
+														 
+		//en la var j almaceno el objeto clienteEncontrado de la clase cliente con el metodo findIndexCuenta con el parametro nc
 		int j = clienteEncontrado.findIndexCuenta(nc);
-			if (j < 0)
+			if (j < 0) //Si j es menor que 0 la cuenta no existe
 			{
 				System.out.println("La cuenta no existe");
 			} else
@@ -170,12 +176,14 @@ int  nc;
 			
 				//if (!suma) {
 				//deposito *= -1;
-				if(deposito <= 0)
+				if(deposito <= 0) //Si deposito es menor o igual que 0, tendra que ingresar una cantidad correta
 				{
 					System.out.println("Ingrese una cantidad correcta");
 					deposito = input.nextInt();
-				}
+				}//En la var saldo equivale al objeto clienteEncontrado con el getter del ArrayList de cuentas .get con la pos de la var j
+				 //.ingresar es el metodo de la clase cuenta
 				int saldo = clienteEncontrado.getCuentas().get(j).ingresar(deposito);
+				
 				System.out.println("El saldo actual es " + saldo);
 			}
 		}
